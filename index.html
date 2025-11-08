@@ -1,38 +1,31 @@
-# games
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Grid of Small Link Buttons</title>
+  <title>Custom Button Grid</title>
   <style>
-    /* Make page fill viewport */
     html, body {
       height: 100%;
       margin: 0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #0f172a; /* dark-ish page bg */
-      -webkit-font-smoothing: antialiased;
+      background: #0f172a;
     }
-
-    /* Container: grid that fills page */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); /* change 72px to change button size */
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
       gap: 10px;
       padding: 12px;
       height: 100%;
       box-sizing: border-box;
-      align-content: start; /* allows scroll if many buttons */
+      align-content: start;
       overflow: auto;
     }
-
-    /* Anchor styled as small button */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 72px;                 /* match minmax width for square look */
+      height: 72px;
       min-height: 72px;
       text-decoration: none;
       color: #021124;
@@ -44,68 +37,36 @@
       user-select: none;
       transition: transform 120ms ease, box-shadow 120ms ease;
     }
-
-    .btn:focus {
-      outline: 3px solid rgba(255,255,255,0.14);
-      outline-offset: 2px;
-    }
-
     .btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 18px rgba(2,17,36,0.35);
     }
-
-    .btn:active {
-      transform: translateY(-1px) scale(.995);
-    }
-
-    /* Small label under grid (optional) */
-    .hint {
-      position: fixed;
-      left: 12px;
-      bottom: 12px;
-      color: rgba(255,255,255,0.75);
-      font-size: 12px;
-      background: rgba(0,0,0,0.35);
-      padding: 6px 8px;
-      border-radius: 8px;
-    }
   </style>
 </head>
 <body>
-  <div class="grid" id="grid">
-    <!-- Example static buttons (you can add/change hrefs here) -->
-    <a class="btn" href="https://example.com/1" target="_blank" rel="noopener">drive mad</a>
-    <a class="btn" href="https://example.com/2" target="_blank" rel="noopener">retro bowl</a>
-    <a class="btn" href="https://example.com/3" target="_blank" rel="noopener">Link 3</a>
-    <a class="btn" href="https://example.com/4" target="_blank" rel="noopener">Link 4</a>
-    <a class="btn" href="https://example.com/5" target="_blank" rel="noopener">Link 5</a>
-    <a class="btn" href="https://example.com/6" target="_blank" rel="noopener">Link 6</a>
-    <a class="btn" href="https://example.com/7" target="_blank" rel="noopener">Link 7</a>
-    <a class="btn" href="https://example.com/8" target="_blank" rel="noopener">Link 8</a>
-    <!-- Add as many as you want; grid will wrap to fill the page -->
-  </div>
+  <div class="grid" id="grid"></div>
 
-  <div class="hint">Change the number of <code>.btn</code> items or their <code>href</code>s to customize.</div>
-
-  <!-- Optional: quick script to fill the page with N demo buttons -->
   <script>
-    // If you prefer to auto-generate many small buttons, set N below.
-    // Set N = 0 to disable auto-generation and use the static anchors above.
-    const N = 10; // change to preferred number of buttons (0 to disable)
-    if (N > 0) {
-      const grid = document.getElementById('grid');
-      grid.innerHTML = ''; // remove static examples
-      for (let i = 1; i <= N; i++) {
-        const a = document.createElement('a');
-        a.className = 'btn';
-        a.href = `https://example.com/${i}`;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        a.textContent = `Link ${i}`;
-        grid.appendChild(a);
-      }
-    }
+    // ✏️ Change the button names and destinations here:
+    const buttons = [
+      { name: "Home", href: "https://example.com/home" },
+      { name: "About", href: "https://example.com/about" },
+      { name: "Contact", href: "https://example.com/contact" },
+      { name: "Shop", href: "https://example.com/shop" },
+      { name: "Blog", href: "https://example.com/blog" },
+      { name: "Help", href: "https://example.com/help" }
+    ];
+
+    const grid = document.getElementById('grid');
+    buttons.forEach(btn => {
+      const a = document.createElement('a');
+      a.className = 'btn';
+      a.href = btn.href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = btn.name;
+      grid.appendChild(a);
+    });
   </script>
 </body>
 </html>
