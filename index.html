@@ -1,4 +1,63 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soft Glowing Rainbow Heading</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  h1 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    font-size: 40px;
+    text-transform: uppercase;
+    background: linear-gradient(
+      90deg,
+      red,
+      orange,
+      yellow,
+      green,
+      cyan,
+      blue,
+      violet,
+      red
+    );
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowShift 6s linear infinite, softGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes rainbowShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes softGlow {
+    0%, 100% {
+      text-shadow: 0 0 2px #fff, 0 0 4px #ff00de, 0 0 8px #ff00de;
+      transform: scale(1);
+    }
+    50% {
+      text-shadow: 0 0 4px #fff, 0 0 8px #00ffff, 0 0 12px #00ffff;
+      transform: scale(1.03);
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>Soft Rainbow Glow</h1>
+</body>
+</html>
 
 <html>
 <head>
